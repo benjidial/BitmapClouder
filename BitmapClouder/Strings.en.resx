@@ -129,6 +129,9 @@
   <data name="CmdOut" xml:space="preserve">
     <value>output</value>
   </data>
+  <data name="Complete" xml:space="preserve">
+    <value>Blurring is complete!</value>
+  </data>
   <data name="DefNew" xml:space="preserve">
     <value>new_{0}</value>
   </data>
@@ -145,23 +148,29 @@
     <value>Help for Bitmap Clouder:
   Command Line:
     {0} {1}
-    {0} {2} [{3}] [{4}]
+    {0} {2} [{3}{4}] [{5}] [{6}]
 
     {1}	prints this
     {2}	input file
-    {3}	output file
-    {4}	opens {3}
-    If {3} is not specified, {5} is used.
+    {3}	specifies to blur {4} times
+    {4}	times to blur
+    {5}	output file
+    {6}	opens {3}
+
+    If {3} is not specified, 1 is used for {4}.
+    If {5} is not specified, {7} is used.
 
   Return Values:
     0 - Okay
     1 - No arguments
-    2 - Couldn't find {2}
-    3 - Couldn't read {2}
-    4 - {2} is empty.
-    5 - {2} is not a valid bitmap.
-    6 - Couldn't save to {3}
-    7 - Couldn't open {3}</value>
+    2 - Couldn't parse {4}
+    3 - {4} was not positive.
+    4 - Couldn't find {2}
+    5 - Couldn't read {2}
+    6 - {2} is empty.
+    7 - {2} is not a valid bitmap.
+    8 - Couldn't save to {5}
+    9 - Couldn't open {5}</value>
   </data>
   <data name="HelpCmd" xml:space="preserve">
     <value>--help</value>
@@ -184,11 +193,29 @@
   <data name="Open" xml:space="preserve">
     <value>-o</value>
   </data>
+  <data name="Progress" xml:space="preserve">
+    <value>Progress: {0} of {1}</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>Blurring {0} {1} time(s)...</value>
+  </data>
   <data name="StartFNF" xml:space="preserve">
     <value>{0} not found: {1}</value>
   </data>
   <data name="StartWin32" xml:space="preserve">
     <value>An error occurred starting {0}: {1}</value>
+  </data>
+  <data name="Times" xml:space="preserve">
+    <value>times</value>
+  </data>
+  <data name="TimesFlag" xml:space="preserve">
+    <value>-t</value>
+  </data>
+  <data name="TimesNotPos" xml:space="preserve">
+    <value>{0} is an integer, but not positive.  Unblurring is not supported.</value>
+  </data>
+  <data name="TimesParse" xml:space="preserve">
+    <value>Could not parse {0}.  Make sure that it is a positive integer.</value>
   </data>
   <data name="TryAgain" xml:space="preserve">
     <value>Try again? ({0}/{1})</value>

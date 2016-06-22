@@ -129,6 +129,9 @@
   <data name="CmdOut" xml:space="preserve">
     <value>résultat</value>
   </data>
+  <data name="Complete" xml:space="preserve">
+    <value>Le brouiller est terminé !</value>
+  </data>
   <data name="DefNew" xml:space="preserve">
     <value>nouveau_{0}</value>
   </data>
@@ -145,23 +148,29 @@
     <value>Aide pour Bitmap Clouder:
   La Ligne de Commande:
     {0} {1}
-    {0} {2} [{3}] [{4}]
+    {0} {2} [{3}{4}] [{5}] [{6}]
 
     {1}	imprime cet écran
     {2}	le fichier d'entrée
-    {3}	le fichier de sortie
-    {4}	ouvre {3}
-    Si {3} n'est pas spécifié, {5} est utilisée.
+    {3}	spécifie à brouiller {4} fois.
+    {4}	fois pour brouiller
+    {5}	le fichier de sortie
+    {6}	ouvre {5}
+
+    Si {3} n'est pas spécifié, 1 est utilisé pour {4}.
+    Si {5} n'est pas spécifié, {7} est utilisée.
 
   Les Valeurs de Retour:
     0 - D'accord
     1 - Aucun argument
-    2 - Ne pouvior pas trouver {2}
-    3 - Ne pouvior pas lire {2}
-    4 - {2} est vide.
-    5 - {2} n'est pas un bitmap valide.
-    6 - Ne pouvior pas enregistrer dans {3}
-    7 - Ne pouvior pas ouvrir {3}</value>
+    2 - Ne pouvior pas  {4}
+    3 - {4} n'a pas été positif.
+    4 - Ne pouvior pas trouver {2}
+    5 - Ne pouvior pas lire {2}
+    6 - {2} est vide.
+    7 - {2} n'est pas un bitmap valide.
+    8 - Ne pouvior pas enregistrer dans {3}
+    9 - Ne pouvior pas ouvrir {3}</value>
   </data>
   <data name="HelpCmd" xml:space="preserve">
     <value>--aide</value>
@@ -184,11 +193,29 @@
   <data name="Open" xml:space="preserve">
     <value>-o</value>
   </data>
+  <data name="Progress" xml:space="preserve">
+    <value>La progression : {0} des {1}</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>Brouiller {0} {1} fois...</value>
+  </data>
   <data name="StartFNF" xml:space="preserve">
     <value>{0} non trouvé : {1}</value>
   </data>
   <data name="StartWin32" xml:space="preserve">
     <value>Une erreur est survenue l'ouverture de {0} : {1}</value>
+  </data>
+  <data name="Times" xml:space="preserve">
+    <value>fois</value>
+  </data>
+  <data name="TimesFlag" xml:space="preserve">
+    <value>-f</value>
+  </data>
+  <data name="TimesNotPos" xml:space="preserve">
+    <value>{0} est un entier, mais pas positif.  Débrouiller n'est pas pris en charge.</value>
+  </data>
+  <data name="TimesParse" xml:space="preserve">
+    <value>Ne pouvior pas analyser {0}.  Assurez-vous qu'il est un entier positif.</value>
   </data>
   <data name="TryAgain" xml:space="preserve">
     <value>Réessayer ? ({0}/{1})</value>

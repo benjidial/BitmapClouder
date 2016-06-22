@@ -11,7 +11,7 @@ using System.Resources;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("")]
-[assembly: AssemblyCopyright("Copyright © 2016 Benji Dial under MIT license")]
+[assembly: AssemblyCopyright("Copyright © 2016 Benji Dial under Apache 2.0 license")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
