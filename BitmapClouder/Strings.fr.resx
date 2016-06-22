@@ -133,24 +133,25 @@
     <value>nouveau_{0}</value>
   </data>
   <data name="ErrorLoad" xml:space="preserve">
-    <value>Une erreur est survenue la lecture du {0}: {1}</value>
+    <value>Une erreur est survenue la lecture de {0} : {1}</value>
   </data>
   <data name="ErrorSave" xml:space="preserve">
-    <value>Une erreur est survenue l'enregistrement dans {0}: {1}</value>
+    <value>Une erreur est survenue l'enregistrement dans {0} : {1}</value>
   </data>
   <data name="FNF" xml:space="preserve">
-    <value>Fichier non trouvé: {0}</value>
+    <value>Fichier non trouvé : {0}</value>
   </data>
   <data name="Help" xml:space="preserve">
     <value>Aide pour Bitmap Clouder:
   La Ligne de Commande:
     {0} {1}
-    {0} {2} [{3}]
+    {0} {2} [{3}] [{4}]
 
     {1}	imprime cet écran
     {2}	le fichier d'entrée
     {3}	le fichier de sortie
-    Si {3} n'est pas spécifié, {4} est utilisée.
+    {4}	ouvre {3}
+    Si {3} n'est pas spécifié, {5} est utilisée.
 
   Les Valeurs de Retour:
     0 - D'accord
@@ -159,7 +160,8 @@
     3 - Ne pouvior pas lire {2}
     4 - {2} est vide.
     5 - {2} n'est pas un bitmap valide.
-    6 - Ne pouvior pas enregistrer dans {3}</value>
+    6 - Ne pouvior pas enregistrer dans {3}
+    7 - Ne pouvior pas ouvrir {3}</value>
   </data>
   <data name="HelpCmd" xml:space="preserve">
     <value>--aide</value>
@@ -170,7 +172,28 @@
   <data name="InvBit" xml:space="preserve">
     <value>{0} n'est pas un bitmap valide.</value>
   </data>
+  <data name="N" xml:space="preserve">
+    <value>Nn</value>
+  </data>
   <data name="NoArgs" xml:space="preserve">
     <value>Aucun argument n'a été fourni !</value>
+  </data>
+  <data name="NoStart" xml:space="preserve">
+    <value>{0} n'a pas été ouvert.  Cela peut être dû à des autorisations du fichier ou le fichier déplacé ou renommé.</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>-o</value>
+  </data>
+  <data name="StartFNF" xml:space="preserve">
+    <value>{0} non trouvé : {1}</value>
+  </data>
+  <data name="StartWin32" xml:space="preserve">
+    <value>Une erreur est survenue l'ouverture de {0} : {1}</value>
+  </data>
+  <data name="TryAgain" xml:space="preserve">
+    <value>Réessayer ? ({0}/{1})</value>
+  </data>
+  <data name="Y" xml:space="preserve">
+    <value>Oo</value>
   </data>
 </root>

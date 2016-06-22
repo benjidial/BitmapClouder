@@ -1,9 +1,7 @@
 ﻿/* Bitmap Clouder source, Copyright 2016 Benji Dial under MIT license */
 using System;
 using System.Drawing;
-using System.Globalization;
 using System.IO;
-using System.Resources;
 
 namespace Benji.BitmapClouder
 {
@@ -43,7 +41,8 @@ namespace Benji.BitmapClouder
         {
             string cmd = Environment.CommandLine.Trim();
             cmd = cmd[0] == '\"' ? '\"' + cmd.Split('\"')[1] + '\"' : cmd.Split(' ')[0];
-            ResourceManager res = new ResourceManager("Benji.BitmapClouder.Strings", typeof(Program).Assembly);
+            var res = new System.Resources.ResourceManager("Benji.BitmapClouder.Strings", typeof(Program).Assembly);
+            var cul = System.Globalization.CultureInfo.CurrentCulture;
             if (args.Length == 0)
             {
                 Console.Error.WriteLine(res.GetString("NoArgs"));
@@ -65,11 +64,13 @@ namespace Benji.BitmapClouder
             if (args[0] == res.GetString("HelpCmd"))
             {
                 Console.WriteLine(res.GetString("Help"), cmd, res.GetString("HelpCmd"), res.GetString("CmdIn"), res.GetString("CmdOut"),
-                    String.Format(CultureInfo.CurrentCulture, res.GetString("DefNew"), res.GetString("CmdIn")));
+                    res.GetString("Open"), String.Format(cul, res.GetString("DefNew"), res.GetString("CmdIn")));
                 return 0;
             }
             if (args.Length == 1)
-                args = new string[ ] { args[0], String.Format(CultureInfo.CurrentCulture, res.GetString("DefNew"), args[0]) };
+                args = new string[ ] { args[0], String.Format(cul, res.GetString("DefNew"), args[0]) };
+            else if (args[1] == res.GetString("Open"))
+                args = new string[ ] { args[0], String.Format(cul, res.GetString("DefNew"), args[0]), args[1] };
             Bitmap b, n;
             try
             {
@@ -111,7 +112,46 @@ namespace Benji.BitmapClouder
                 return 6;
             }
             n.Dispose();
-            return 0;
+            if (args.Length < 3 || args[2] != res.GetString("Open"))
+                return 0;
+            while (true)
+            {
+                try
+                {
+                    System.Diagnostics.Process.Start(args[1]);
+                    return 0;
+                }
+                catch (System.ComponentModel.Win32Exception ex)
+                {
+                    Console.Error.WriteLine(res.GetString("StartWin32"), args[1], ex.Message);
+                }
+                catch (FileNotFoundException ex)
+                {
+                    Console.Error.WriteLine(res.GetString("StartFNF"), args[1], ex.Message);
+                }
+                while (true)
+                {
+                    Console.Write(String.Format(cul, res.GetString("TryAgain"),
+                        res.GetString("Y")[0], res.GetString("N")[0]));
+                    try
+                    {
+                        char ans = Console.ReadKey(true).KeyChar;
+                        Console.WriteLine();
+                        if (res.GetString("Y").Contains(new string(ans, 1)))
+                            break;
+                        else if (res.GetString("N").Contains(new string(ans, 1)))
+                            return 7;
+                    }
+                    catch (InvalidOperationException)
+                    {
+                        Console.CursorLeft = 0;
+                        Console.Write(new String(' ', String.Format(cul, res.GetString("TryAgain"),
+                            res.GetString("Y")[0], res.GetString("N")[0]).Length));
+                        Console.CursorLeft = 0;
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }

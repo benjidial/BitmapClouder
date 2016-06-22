@@ -145,12 +145,13 @@
     <value>Help for Bitmap Clouder:
   Command Line:
     {0} {1}
-    {0} {2} [{3}]
+    {0} {2} [{3}] [{4}]
 
     {1}	prints this
     {2}	input file
     {3}	output file
-    If {3} is not specified, {4} is used.
+    {4}	opens {3}
+    If {3} is not specified, {5} is used.
 
   Return Values:
     0 - Okay
@@ -159,7 +160,8 @@
     3 - Couldn't read {2}
     4 - {2} is empty.
     5 - {2} is not a valid bitmap.
-    6 - Couldn't save to {3}</value>
+    6 - Couldn't save to {3}
+    7 - Couldn't open {3}</value>
   </data>
   <data name="HelpCmd" xml:space="preserve">
     <value>--help</value>
@@ -170,7 +172,28 @@
   <data name="InvBit" xml:space="preserve">
     <value>{0} is not a valid bitmap.</value>
   </data>
+  <data name="N" xml:space="preserve">
+    <value>Nn</value>
+  </data>
   <data name="NoArgs" xml:space="preserve">
     <value>No arguments were supplied!</value>
+  </data>
+  <data name="NoStart" xml:space="preserve">
+    <value>{0} was not opened.  This may be due to file permissions or the file being moved or renamed.</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>-o</value>
+  </data>
+  <data name="StartFNF" xml:space="preserve">
+    <value>{0} not found: {1}</value>
+  </data>
+  <data name="StartWin32" xml:space="preserve">
+    <value>An error occurred starting {0}: {1}</value>
+  </data>
+  <data name="TryAgain" xml:space="preserve">
+    <value>Try again? ({0}/{1})</value>
+  </data>
+  <data name="Y" xml:space="preserve">
+    <value>Yy</value>
   </data>
 </root>
