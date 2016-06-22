@@ -58,6 +58,8 @@ namespace Benji.BitmapClouder
             cmd = cmd[0] == '\"' ? '\"' + cmd.Split('\"')[1] + '\"' : cmd.Split(' ')[0];
             res = new System.Resources.ResourceManager("Benji.BitmapClouder.Strings", typeof(Program).Assembly);
             var cul = System.Globalization.CultureInfo.CurrentCulture;
+            Console.WriteLine(res.GetString("Splash"), res.GetString("Version"), res.GetString("URL"), cmd, res.GetString("LicenseCmd"));
+            Console.WriteLine();
             if (args.Length == 0)
             {
                 Console.Error.WriteLine(res.GetString("NoArgs"));
@@ -78,9 +80,14 @@ namespace Benji.BitmapClouder
             }
             if (args[0] == res.GetString("HelpCmd"))
             {
-                Console.WriteLine(res.GetString("Help"), cmd, res.GetString("HelpCmd"), res.GetString("CmdIn"),
-                    res.GetString("TimesFlag"), res.GetString("Times"), res.GetString("CmdOut"), res.GetString("Open"),
-                    String.Format(cul, res.GetString("DefNew"), res.GetString("CmdIn")));
+                Console.WriteLine(res.GetString("Help"), cmd, res.GetString("HelpCmd"), res.GetString("LicenseCmd"),
+                    res.GetString("CmdIn"), res.GetString("TimesFlag"), res.GetString("Times"), res.GetString("CmdOut"),
+                    res.GetString("Open"), String.Format(cul, res.GetString("DefNew"), res.GetString("CmdIn")));
+                return 0;
+            }
+            if (args[0] == res.GetString("LicenseCmd"))
+            {
+                Console.WriteLine(res.GetString("License"));
                 return 0;
             }
             times = 1;
