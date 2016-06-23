@@ -1,4 +1,4 @@
-﻿/* Bitmap Clouder source */
+﻿/* Bitmap Clouder source v1.0.0 */
 
 /* Copyright 2016 Benji Dial
 
@@ -17,6 +17,7 @@
 using System;
 using System.Drawing;
 using System.IO;
+using System.Threading;
 
 namespace Benji.BitmapClouder
 {
@@ -25,30 +26,19 @@ namespace Benji.BitmapClouder
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope")]
         public static Bitmap Blur(Bitmap b)
         {
-            bool d = true;
-            Bitmap n = null;
-            try
-            {
-                n = new Bitmap(b.Width, b.Height, b.PixelFormat);
-                for (int y = 0; y < b.Height; y++)
-                    for (int x = 0; x < b.Width; x++)
-                        n.SetPixel(x, y, Color.FromArgb(
-                            (b.GetPixel((x + 1 + b.Width) % b.Width, y).A + b.GetPixel((x - 1 + b.Width) % b.Width, y).A +
-                            b.GetPixel(x, (y + 1 + b.Height) % b.Height).A + b.GetPixel(x, (y - 1 + b.Height) % b.Height).A) / 4,
-                            (b.GetPixel((x + 1 + b.Width) % b.Width, y).R + b.GetPixel((x - 1 + b.Width) % b.Width, y).R +
-                            b.GetPixel(x, (y + 1 + b.Height) % b.Height).R + b.GetPixel(x, (y - 1 + b.Height) % b.Height).R) / 4,
-                            (b.GetPixel((x + 1 + b.Width) % b.Width, y).G + b.GetPixel((x - 1 + b.Width) % b.Width, y).G +
-                            b.GetPixel(x, (y + 1 + b.Height) % b.Height).G + b.GetPixel(x, (y - 1 + b.Height) % b.Height).G) / 4,
-                            (b.GetPixel((x + 1 + b.Width) % b.Width, y).B + b.GetPixel((x - 1 + b.Width) % b.Width, y).B +
-                            b.GetPixel(x, (y + 1 + b.Height) % b.Height).B + b.GetPixel(x, (y - 1 + b.Height) % b.Height).B) / 4));
-                d = false;
-                return n;
-            }
-            finally
-            {
-                if (d && n != null)
-                    n.Dispose();
-            }
+            Bitmap n = new Bitmap(b.Width, b.Height, b.PixelFormat);
+            for (int y = 0; y < b.Height; y++)
+                for (int x = 0; x < b.Width; x++)
+                    n.SetPixel(x, y, Color.FromArgb(
+                        (b.GetPixel((x + 1 + b.Width) % b.Width, y).A + b.GetPixel((x - 1 + b.Width) % b.Width, y).A +
+                        b.GetPixel(x, (y + 1 + b.Height) % b.Height).A + b.GetPixel(x, (y - 1 + b.Height) % b.Height).A) / 4,
+                        (b.GetPixel((x + 1 + b.Width) % b.Width, y).R + b.GetPixel((x - 1 + b.Width) % b.Width, y).R +
+                        b.GetPixel(x, (y + 1 + b.Height) % b.Height).R + b.GetPixel(x, (y - 1 + b.Height) % b.Height).R) / 4,
+                        (b.GetPixel((x + 1 + b.Width) % b.Width, y).G + b.GetPixel((x - 1 + b.Width) % b.Width, y).G +
+                        b.GetPixel(x, (y + 1 + b.Height) % b.Height).G + b.GetPixel(x, (y - 1 + b.Height) % b.Height).G) / 4,
+                        (b.GetPixel((x + 1 + b.Width) % b.Width, y).B + b.GetPixel((x - 1 + b.Width) % b.Width, y).B +
+                        b.GetPixel(x, (y + 1 + b.Height) % b.Height).B + b.GetPixel(x, (y - 1 + b.Height) % b.Height).B) / 4));
+            return n;
         }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope")]
